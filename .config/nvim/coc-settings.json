@@ -1,0 +1,3 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["js", "jsx", "ts", "tsx", "rust"]
+}
