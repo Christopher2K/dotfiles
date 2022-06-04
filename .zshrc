@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH="/Users/christopher/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -28,20 +25,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 ## GO
-export PATH="$PATH:/Users/christopher/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 ## JAVA
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home" # OPEN JDK 11
 
 ## ANDROID
-export ANDROID_ROOT="/Users/christopher/Library/Android"
+export ANDROID_ROOT="$HOME/Library/Android"
 export ANDROID_SDK_ROOT="$ANDROID_ROOT/sdk"
 export ANDROID_PLATFORM_TOOLS="$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_PLATFORM_TOOLS"
 
 ## Flutter
 export PATH="$PATH:$DEV_RESOURCES/flutter/bin"
-export CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+export CHROME_EXECUTABLE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
 
 ## HOMEBREW CONFIG
 export HOMEBREW_NO_AUTO_UPDATE=1
