@@ -61,6 +61,9 @@ packer.startup(
 
         -- LazyGit integration
         use 'kdheepak/lazygit.nvim'
+
+        -- Kitty Conf Highlighting
+        use 'fladson/vim-kitty'
     end
 )
 
