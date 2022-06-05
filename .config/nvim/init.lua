@@ -1,3 +1,6 @@
+-- INIT PLUGINS FIRST
+require('plugins')
+
 -- KEYMAPS
 -- -- fn to easily set add keymaps
 require('mapx').setup{ global = true }
@@ -49,7 +52,6 @@ nmap('gr', [[<Plug>(coc-references)]], 'silent')
 nnoremap('<leader>gg', ':LazyGit<CR>', 'silent')
 
 -- PACKER
-require("plugins")
 require("telescope_setup")
 require("toggleterm_setup")
 require("treesitter_setup")

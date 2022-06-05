@@ -1,4 +1,4 @@
-export ZSH="/Users/christopher/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
@@ -11,7 +11,7 @@ export NVIM_CONFIG="$HOME/.config/nvim/init.lua"
 
 
 ## CUSTOM VARS
-export DEV="$HOME/Dev"
+export DEV="$HOME/Developer"
 export DEV_RESOURCES="$DEV/RESOURCES"
 export CONCENTRATION="$DEV/MOBILE_APP/concentration"
 export PLAYTHELIST="$DEV/PLAYTHELIST"
