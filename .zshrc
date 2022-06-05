@@ -9,13 +9,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=nvim
 export NVIM_CONFIG="$HOME/.config/nvim/init.lua"
 
-
 ## CUSTOM VARS
 export DEV="$HOME/Developer"
-export DEV_RESOURCES="$DEV/RESOURCES"
-export CONCENTRATION="$DEV/MOBILE_APP/concentration"
-export PLAYTHELIST="$DEV/PLAYTHELIST"
-
+#
 ## HOMEBREW
 export PATH="/opt/homebrew/bin:$PATH"
 
