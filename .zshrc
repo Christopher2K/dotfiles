@@ -46,4 +46,5 @@ export RBENV_VERSION=3.1.1
 # DOTFILES REPOSITORY
 export DOTFILES_REPOSITORY=$HOME/.dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias x86="arch -x86_64 $SHELL"
 
