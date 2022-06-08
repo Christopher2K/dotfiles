@@ -47,6 +47,17 @@ nmap('gd', [[<Plug>(coc-definition)]], 'silent')
 nmap('gy', [[<Plug>(coc-type-definition)]], 'silent')
 nmap('gi', [[<Plug>(coc-implementation)]], 'silent')
 nmap('gr', [[<Plug>(coc-references)]], 'silent')
+nnoremap('K', ':call ShowDocumentation()<CR>', 'silent')
+
+vim.api.nvim_exec([[
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+]], false)
 
 -- -- lazygit
 nnoremap('<leader>gg', ':LazyGit<CR>', 'silent')
