@@ -30,15 +30,29 @@ packer.startup(
         -- Status bar
         use 'nvim-lualine/lualine.nvim'
 
-        -- LSP
-        use {'neoclide/coc.nvim', branch = 'release'}
+        -- Native LSP
+        use 'williamboman/nvim-lsp-installer' -- Auto installer
+        use 'neovim/nvim-lspconfig' -- Preconfig for LSPs
+
+        -- Snippets
+        use 'L3MON4D3/LuaSnip'
+
+        -- Completion
+        use 'hrsh7th/nvim-cmp' -- Engine 
+        use 'hrsh7th/cmp-nvim-lsp' -- LSP completion
+        use 'hrsh7th/cmp-buffer' -- buffer completion
+        use 'hrsh7th/cmp-path' -- path completion 
+        use 'saadparwaiz1/cmp_luasnip' -- complex completion
+
+        -- Format and linting engine 
+        use 'jose-elias-alvarez/null-ls.nvim' -- Null LS
 
         -- Terminal
         use {'akinsho/toggleterm.nvim', tag = 'v1.*'}
 
         -- Treesitter
         use 'nvim-treesitter/nvim-treesitter'
-	
+
         -- Telescope
         use {
             'nvim-telescope/telescope.nvim',
