@@ -6,7 +6,6 @@ require("plugins")
 require("mapx").setup({ global = true })
 
 vim.g.mapleader = " "
-
 noremap("<up>", "<nop>", "silent")
 noremap("<down>", "<nop>", "silent")
 noremap("<left>", "<nop>", "silent")
@@ -35,8 +34,11 @@ require("comment_setup")
 require("surround_setup")
 require("nullls_setup")
 require("indentomatic_setup")
+require("indentblankline_setup")
+require("autopairs_setup")
 
 -- OPTIONS
+vim.o.encoding = "UTF-8"
 vim.o.number = true
 vim.o.mouse = "a"
 vim.o.autoread = true
@@ -48,4 +50,4 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- STARTUP COMMANDS
-vim.cmd("colorscheme neon")
+vim.cmd("colorscheme dracula")
