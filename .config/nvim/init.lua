@@ -34,6 +34,7 @@ require("lualine_setup")
 require("comment_setup")
 require("surround_setup")
 require("nullls_setup")
+require("indentomatic_setup")
 
 -- OPTIONS
 vim.o.number = true

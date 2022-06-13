@@ -78,6 +78,9 @@ packer.startup(
 
         -- Kitty Conf Highlighting
         use 'fladson/vim-kitty'
+
+        -- Auto indent detection
+        use 'Darazaki/indent-o-matic'
     end
 )
 
