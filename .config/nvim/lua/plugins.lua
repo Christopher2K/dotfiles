@@ -90,4 +90,7 @@ packer.startup(function()
 
 	-- Indentation and blank lines indicators
 	use("lukas-reineke/indent-blankline.nvim")
+
+	-- Git signals
+	use("lewis6991/gitsigns.nvim")
 end)

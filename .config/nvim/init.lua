@@ -36,6 +36,7 @@ require("nullls_setup")
 require("indentomatic_setup")
 require("indentblankline_setup")
 require("autopairs_setup")
+require("gitsigns_setup")
 
 -- OPTIONS
 vim.o.encoding = "UTF-8"
