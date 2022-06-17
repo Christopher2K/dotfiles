@@ -80,7 +80,7 @@ packer.startup(function()
 	use("fladson/vim-kitty")
 
 	-- Auto indent detection
-	use("Darazaki/indent-o-matic")
+	use("tpope/vim-sleuth")
 
 	-- LazyGit integration
 	use("kdheepak/lazygit.nvim")

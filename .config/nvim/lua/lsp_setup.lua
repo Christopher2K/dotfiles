@@ -26,7 +26,7 @@ local on_attach = function()
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
     vim.keymap.set("n", "<leader>dl", ":Telescope diagnostics<CR>", { buffer = 0 })
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-    vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, { buffer = 0 })
+    vim.keymap.set("n", "<leader>F", vim.lsp.buf.formatting, { buffer = 0 })
 end
 
 for _, server in pairs(servers) do
