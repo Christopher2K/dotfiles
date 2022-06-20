@@ -23,7 +23,8 @@ packer.startup(function()
 	use({ "wbthomason/packer.nvim", opt = true })
 
 	-- Color Scheme
-	use("Mofiqul/dracula.nvim")
+	-- use("Mofiqul/dracula.nvim")
+	use({ "catppuccin/nvim", as = 'catppucin' })
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Status bar

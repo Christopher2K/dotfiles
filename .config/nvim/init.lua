@@ -50,4 +50,5 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- STARTUP COMMANDS
-vim.cmd("colorscheme dracula")
+vim.g.catppuccin_flavour = "mocha"
+vim.cmd("colorscheme catppuccin")
