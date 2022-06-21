@@ -94,4 +94,7 @@ packer.startup(function()
 
 	-- Git signals
 	use("lewis6991/gitsigns.nvim")
+
+	-- Git Blame
+	use("f-person/git-blame.nvim")
 end)
