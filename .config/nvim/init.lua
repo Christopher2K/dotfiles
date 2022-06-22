@@ -44,11 +44,6 @@ vim.o.mouse = "a"
 vim.o.autoread = true
 vim.o.linespace = 5
 
--- -- Tab Settings
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-
 -- STARTUP COMMANDS
 vim.g.catppuccin_flavour = "mocha"
 vim.cmd("colorscheme catppuccin")
