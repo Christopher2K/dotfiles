@@ -26,13 +26,19 @@ local on_attach = function()
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
     vim.keymap.set("n", "<leader>dl", ":Telescope diagnostics<CR>", { buffer = 0 })
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-    vim.keymap.set("n", "<leader>F", vim.lsp.buf.formatting, { buffer = 0 })
+    vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format { async = true }<CR>", { buffer = 0, })
 end
 
 for _, server in pairs(servers) do
     lsp[server].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = function (client)
+            on_attach()
+            if (server == 'tsserver') then
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            end
+        end
     })
 end
 
