@@ -9,6 +9,7 @@ local servers = {
     "pyright",
     "jsonls",
     "html",
+    "cssls",
     "cssmodules_ls",
     "sumneko_lua",
 }
@@ -26,23 +27,44 @@ local on_attach = function()
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
     vim.keymap.set("n", "<leader>dl", ":Telescope diagnostics<CR>", { buffer = 0 })
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-    vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format { async = true }<CR>", { buffer = 0, })
+    vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format { async = true }<CR>", { buffer = 0 })
 end
 
 for _, server in pairs(servers) do
     lsp[server].setup({
         capabilities = capabilities,
-        on_attach = function (client)
+        on_attach = function(client)
             on_attach()
-            if (server == 'tsserver') then
+            if server == "tsserver" then
                 client.server_capabilities.documentFormattingProvider = false
                 client.server_capabilities.documentRangeFormattingProvider = false
             end
-        end
+        end,
     })
 end
 
--- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+-- SPECIFICS
+require("lspconfig").sumneko_lua.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
 })

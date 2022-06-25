@@ -3,25 +3,25 @@ require("plugins")
 
 -- KEYMAPS
 -- -- fn to easily set add keymaps
-require("mapx").setup({ global = true })
+local m = require("mapx").setup()
 
 vim.g.mapleader = " "
-noremap("<up>", "<nop>", "silent")
-noremap("<down>", "<nop>", "silent")
-noremap("<left>", "<nop>", "silent")
-noremap("<right>", "<nop>", "silent")
+m.noremap("<up>", "<nop>", "silent")
+m.noremap("<down>", "<nop>", "silent")
+m.noremap("<left>", "<nop>", "silent")
+m.noremap("<right>", "<nop>", "silent")
 
-noremap("<leader>w", ":w<CR>", "silent")
+m.noremap("<leader>w", ":w<CR>", "silent")
 
 -- -- tab navigation
-noremap("<S-H>", ":tabprev<CR>", "silent")
-noremap("<S-L>", ":tabnext<CR>", "silent")
+m.noremap("<S-H>", ":tabprev<CR>", "silent")
+m.noremap("<S-L>", ":tabnext<CR>", "silent")
 
 -- -- window navigation
-noremap("<F2>", "<C-w>w", "silent")
+m.noremap("<F2>", "<C-w>w", "silent")
 
 -- -- lazygit
-nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
+m.nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
 
 -- PACKER
 require("lsp_setup")
@@ -45,5 +45,5 @@ vim.o.autoread = true
 vim.o.linespace = 5
 
 -- STARTUP COMMANDS
-vim.g.catppuccin_flavour = "mocha"
+vim.g.catppuccinflavour = "mocha"
 vim.cmd("colorscheme catppuccin")
