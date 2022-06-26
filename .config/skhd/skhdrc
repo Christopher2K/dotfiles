@@ -1,0 +1,13 @@
+# Focus window
+
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north 
+alt - l : yabai -m window --focus east
+
+alt - r : yabai -m space --rotate 90
+
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# This one doesn't work but we will work on that
+shift + cmd - n : yabai -m space --create && yabai -m space --focus last
