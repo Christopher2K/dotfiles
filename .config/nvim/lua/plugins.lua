@@ -20,81 +20,83 @@ packer.init({
 
 packer.startup(function()
 	-- Packer installer
-	use({ "wbthomason/packer.nvim", opt = true })
+	packer.use({ "wbthomason/packer.nvim", opt = true })
 
 	-- Color Scheme
-	-- use("Mofiqul/dracula.nvim")
-	use({ "catppuccin/nvim", as = "catppucin" })
-	use("kyazdani42/nvim-web-devicons")
+	packer.use({ "catppuccin/nvim", as = "catppucin" })
+	packer.use("kyazdani42/nvim-web-devicons")
 
 	-- Status bar
-	use("nvim-lualine/lualine.nvim")
+	packer.use("nvim-lualine/lualine.nvim")
 
 	-- Native LSP
-	use("williamboman/nvim-lsp-installer") -- Auto installer
-	use("neovim/nvim-lspconfig") -- Preconfig for LSPs
+	packer.use("williamboman/nvim-lsp-installer") -- Auto installer
+	packer.use("neovim/nvim-lspconfig") -- Preconfig for LSPs
 
 	-- Snippets
-	use("L3MON4D3/LuaSnip")
+	packer.use("L3MON4D3/LuaSnip")
 
 	-- Completion
-	use("hrsh7th/nvim-cmp") -- Engine
-	use("hrsh7th/cmp-nvim-lsp") -- LSP completion
-	use("hrsh7th/cmp-buffer") -- buffer completion
-	use("hrsh7th/cmp-path") -- path completion
-	use("saadparwaiz1/cmp_luasnip") -- complex completion
+	packer.use("hrsh7th/nvim-cmp") -- Engine
+	packer.use("hrsh7th/cmp-nvim-lsp") -- LSP completion
+	packer.use("hrsh7th/cmp-buffer") -- buffer completion
+	packer.use("hrsh7th/cmp-path") -- path completion
+	packer.use("saadparwaiz1/cmp_luasnip") -- complex completion
 
 	-- Auto Pair
-	use("windwp/nvim-autopairs")
+	packer.use("windwp/nvim-autopairs")
 
 	-- Format and linting engine
-	use("jose-elias-alvarez/null-ls.nvim") -- Null LS
+	packer.use("jose-elias-alvarez/null-ls.nvim") -- Null LS
 
 	-- Terminal
-	use({ "akinsho/toggleterm.nvim", tag = "v1.*" })
+	packer.use({ "akinsho/toggleterm.nvim", tag = "v1.*" })
 
 	-- Treesitter
-	use("nvim-treesitter/nvim-treesitter")
-	use("windwp/nvim-ts-autotag") -- Auto tag extension
+	packer.use("nvim-treesitter/nvim-treesitter")
+	packer.use("windwp/nvim-ts-autotag") -- Auto tag extension
 
 	-- Telescope
-	use({
+	packer.use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
 	})
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("nvim-telescope/telescope-project.nvim")
+	packer.use("nvim-telescope/telescope-file-browser.nvim")
+	packer.use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	packer.use("nvim-telescope/telescope-project.nvim")
 
 	-- Comment
-	use("numToStr/Comment.nvim")
+	packer.use("numToStr/Comment.nvim")
 
 	-- Surround
-	use("ur4ltz/surround.nvim")
+	packer.use("ur4ltz/surround.nvim")
 
 	-- Better mappings
-	use("b0o/mapx.nvim")
+	packer.use("b0o/mapx.nvim")
 
 	-- Kitty Conf Highlighting
-	use("fladson/vim-kitty")
+	packer.use("fladson/vim-kitty")
 
 	-- Auto indent detection
-	use("tpope/vim-sleuth")
+	packer.use("tpope/vim-sleuth")
 
 	-- LazyGit integration
-	use("kdheepak/lazygit.nvim")
+	packer.use("kdheepak/lazygit.nvim")
 
 	-- Kitty Conf Highlighting
-	use("fladson/vim-kitty")
+	packer.use("fladson/vim-kitty")
 
 	-- Indentation and blank lines indicators
-	use("lukas-reineke/indent-blankline.nvim")
+	packer.use("lukas-reineke/indent-blankline.nvim")
 
 	-- Git signals
-	use("lewis6991/gitsigns.nvim")
+	packer.use("lewis6991/gitsigns.nvim")
 
 	-- Git Blame
-	use("f-person/git-blame.nvim")
+	packer.use("f-person/git-blame.nvim")
+
+	-- Errors and Diagnostics
+	packer.use("folke/trouble.nvim")
 end)

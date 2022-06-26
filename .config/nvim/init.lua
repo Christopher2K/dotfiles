@@ -3,7 +3,7 @@ require("plugins")
 
 -- KEYMAPS
 -- -- fn to easily set add keymaps
-local m = require("mapx").setup()
+local m = require("mapx").setup({ global = true })
 
 vim.g.mapleader = " "
 m.noremap("<up>", "<nop>", "silent")
@@ -36,6 +36,7 @@ require("nullls_setup")
 require("indentblankline_setup")
 require("autopairs_setup")
 require("gitsigns_setup")
+require("trouble_setup")
 
 -- OPTIONS
 vim.o.encoding = "UTF-8"
