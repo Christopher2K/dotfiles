@@ -48,3 +48,8 @@ export DOTFILES_REPOSITORY=$HOME/.dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias x86="arch -x86_64 $SHELL"
 
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
