@@ -48,3 +48,8 @@ vim.o.linespace = 5
 -- STARTUP COMMANDS
 vim.g.catppuccinflavour = "mocha"
 vim.cmd("colorscheme catppuccin")
+
+-- AUTOSAVE FOR TIKTOK
+vim.g.auto_save = 0
+vim.g.auto_save_silent = 1
+vim.g.auto_save_events = {'TextChangedI'}

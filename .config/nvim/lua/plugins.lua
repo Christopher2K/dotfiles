@@ -99,4 +99,8 @@ packer.startup(function()
 
 	-- Errors and Diagnostics
 	packer.use("folke/trouble.nvim")
+
+	-- Auto Save
+	packer.use("907th/vim-auto-save")
+	
 end)
