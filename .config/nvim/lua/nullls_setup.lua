@@ -1,4 +1,6 @@
-local null_ls = require("null-ls")
-local formatting = null_ls.builtins.formatting
+local ok, null_ls = pcall(require, "null-ls")
 
-null_ls.setup({sources = {formatting.lua_format, formatting.prettier}})
+if ok then
+    local formatting = null_ls.builtins.formatting
+    null_ls.setup({sources = {formatting.lua_format, formatting.prettier}})
+end

@@ -31,7 +31,10 @@ packer.startup(function()
     packer.use("b0o/mapx.nvim")
 
     -- Status bar
-    packer.use({"nvim-lualine/lualine.nvim", config = require("lualine_setup")})
+    packer.use({
+        "nvim-lualine/lualine.nvim",
+        config = require("lualine_setup")
+    })
 
     -- Native LSP
     packer.use("williamboman/nvim-lsp-installer") -- Auto installer
@@ -77,10 +80,16 @@ packer.startup(function()
     require("telescope_setup")
 
     -- Comment
-    packer.use({"numToStr/Comment.nvim", config = require("comment_setup")})
+    packer.use({
+        "numToStr/Comment.nvim",
+        config = require("comment_setup")
+    })
 
     -- Surround
-    packer.use({"ur4ltz/surround.nvim", config = require("surround_setup")})
+    packer.use({
+        "ur4ltz/surround.nvim",
+        config = require("surround_setup")
+    })
 
     -- Kitty Conf Highlighting
     packer.use("fladson/vim-kitty")
@@ -101,7 +110,10 @@ packer.startup(function()
     })
 
     -- Git signals
-    packer.use({"lewis6991/gitsigns.nvim", config = require("gitsigns_setup")})
+    packer.use({
+        "lewis6991/gitsigns.nvim",
+        config = require("gitsigns_setup")
+    })
 
     -- Git Blame
     packer.use("f-person/git-blame.nvim")
@@ -111,4 +123,11 @@ packer.startup(function()
 
     -- Auto Save
     packer.use("907th/vim-auto-save")
+
+    -- Autopairs
+    packer.use({
+        "windwp/nvim-autopairs",
+        config = require("autopairs_setup")
+    })
+
 end)

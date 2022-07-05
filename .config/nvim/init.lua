@@ -3,24 +3,26 @@ vim.g.mapleader = " "
 
 require("plugins")
 
-local m = require("mapx").setup({ global = true })
+local ok_m, m = pcall(require, "mapx")
 
-m.noremap("<up>", "<nop>", "silent")
-m.noremap("<down>", "<nop>", "silent")
-m.noremap("<left>", "<nop>", "silent")
-m.noremap("<right>", "<nop>", "silent")
+if ok_m then
+    m.noremap("<up>", "<nop>", "silent")
+    m.noremap("<down>", "<nop>", "silent")
+    m.noremap("<left>", "<nop>", "silent")
+    m.noremap("<right>", "<nop>", "silent")
 
-m.noremap("<leader>w", ":w<CR>", "silent")
+    m.noremap("<leader>w", ":w<CR>", "silent")
 
--- -- tab navigation
-m.noremap("<S-H>", ":tabprev<CR>", "silent")
-m.noremap("<S-L>", ":tabnext<CR>", "silent")
+    -- -- tab navigation
+    m.noremap("<S-H>", ":tabprev<CR>", "silent")
+    m.noremap("<S-L>", ":tabnext<CR>", "silent")
 
--- -- window navigation
-m.noremap("<F2>", "<C-w>w", "silent")
+    -- -- window navigation
+    m.noremap("<F2>", "<C-w>w", "silent")
 
--- -- lazygit
-m.nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
+    -- -- lazygit
+    m.nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
+end
 
 -- OPTIONS
 vim.o.encoding = "UTF-8"
@@ -35,6 +37,7 @@ vim.g.catppuccinflavour = "mocha"
 vim.cmd("colorscheme catppuccin")
 
 -- AUTOSAVE FOR TIKTOK
+-- TODO: MAKE THIS A COMMAND
 vim.g.auto_save = 0
 vim.g.auto_save_silent = 1
-vim.g.auto_save_events = { "TextChangedI" }
+vim.g.auto_save_events = {"TextChangedI"}
