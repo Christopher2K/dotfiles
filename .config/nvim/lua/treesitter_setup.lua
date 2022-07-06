@@ -6,7 +6,7 @@ if ok then
         ensure_installed = 'all',
         ignore_install = {'phpdoc'},
         highlight = {enable = true},
-        indent = {enable = true},
+        indent = {enable = false},
         autotag = {enable = true}
     })
 end
