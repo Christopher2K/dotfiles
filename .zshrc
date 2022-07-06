@@ -1,5 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+## HOMEBREW
+export PATH="/opt/homebrew/bin:$PATH"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git)
@@ -11,9 +14,6 @@ export NVIM_CONFIG="$HOME/.config/nvim/init.lua"
 
 ## CUSTOM VARS
 export DEV="$HOME/Developer"
-#
-## HOMEBREW
-export PATH="/opt/homebrew/bin:$PATH"
 
 ## NODE VERSION MANAGER
 export NVM_DIR="$HOME/.nvm"
@@ -53,3 +53,6 @@ alias x86="arch -x86_64 $SHELL"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# PROMPT
+eval "$(starship init zsh)"
