@@ -24,6 +24,8 @@ if ok_m then
     m.nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
 end
 
+print("Bruh")
+
 -- OPTIONS
 vim.o.encoding = "UTF-8"
 vim.o.number = true
@@ -36,8 +38,17 @@ vim.opt.listchars:append("eol:↴")
 vim.g.catppuccinflavour = "mocha"
 vim.cmd("colorscheme catppuccin")
 
--- AUTOSAVE FOR TIKTOK
--- TODO: MAKE THIS A COMMAND
-vim.g.auto_save = 0
-vim.g.auto_save_silent = 1
-vim.g.auto_save_events = {"TextChangedI"}
+-- CUSTOM COMMAND
+if ok_m then
+    local TikTokModeEnabled = function()
+        vim.g.auto_save = 1
+        vim.g.auto_save_silent = 1
+        vim.g.auto_save_events = { "TextChangedI" }
+    end
+    m.cmd("TikTokModeEnabled", TikTokModeEnabled)
+
+    local TikTokModeDisabled = function()
+        vim.g.auto_save = 0
+    end
+    m.cmd("TikTokModeDisabled", TikTokModeDisabled)
+end
