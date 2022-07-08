@@ -1,0 +1,8 @@
+command_timeout = 10000
+
+[ruby]
+detect_variables = []
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
