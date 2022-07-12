@@ -9,6 +9,7 @@ tap "supabase/tap"
 tap "tomanthony/brews"
 tap "wix/brew"
 
+brew "go-task/tap/go-task"
 brew "act"
 brew "elixir"
 brew "exercism"
