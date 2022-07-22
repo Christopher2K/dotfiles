@@ -19,6 +19,7 @@ if ok_cmp and ok_lsp and ok_lspconfig then
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
         vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
+        vim.keymap.set("n", "ge", vim.diagnostic.open_float)
         vim.keymap
             .set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
         vim.keymap

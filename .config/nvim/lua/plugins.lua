@@ -100,9 +100,6 @@ packer.startup(function()
     -- LazyGit integration
     packer.use("kdheepak/lazygit.nvim")
 
-    -- Kitty Conf Highlighting
-    packer.use("fladson/vim-kitty")
-
     -- Indentation and blank lines indicators
     packer.use({
         "lukas-reineke/indent-blankline.nvim",
@@ -114,12 +111,6 @@ packer.startup(function()
         "lewis6991/gitsigns.nvim",
         config = require("gitsigns_setup")
     })
-
-    -- Git Blame
-    packer.use("f-person/git-blame.nvim")
-
-    -- Errors and Diagnostics
-    packer.use({"folke/trouble.nvim", config = require("trouble_setup")})
 
     -- Auto Save
     packer.use("907th/vim-auto-save")
