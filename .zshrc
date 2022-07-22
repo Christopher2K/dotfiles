@@ -43,6 +43,15 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 eval "$(rbenv init - zsh)"
 export RBENV_VERSION=3.1.1
 
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+PYENV_VERSION=3.10.4
+
+# POETRY
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # DOTFILES REPOSITORY
 export DOTFILES_REPOSITORY=$HOME/.dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
@@ -56,3 +65,5 @@ export PATH="$PNPM_HOME:$PATH"
 
 # PROMPT
 eval "$(starship init zsh)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
