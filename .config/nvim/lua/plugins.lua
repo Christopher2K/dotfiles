@@ -121,4 +121,9 @@ packer.startup(function()
         config = require("autopairs_setup")
     })
 
+    packer.use({
+        "simrat39/rust-tools.nvim",
+        config = require("rusttools_setup")
+    })
+
 end)
