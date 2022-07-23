@@ -34,10 +34,10 @@ if ok_m then
 
     -- -- window navigation
     m.noremap("<F2>", "<C-w>w", "silent")
-    m.noremap("<C-=>", ":vertical resize +2<CR>", "silent")
-    m.noremap("<C-->", ":vertical resize -2<CR>", "silent")
-    m.noremap("<C-]>", ":resize +2<CR>", "silent")
-    m.noremap("<C-[>", ":resize -2<CR>", "silent")
+    m.noremap("<leader><up>", ":vertical resize +2<CR>", "silent")
+    m.noremap("<leader><down>", ":vertical resize -2<CR>", "silent")
+    m.noremap("<leader><right>", ":resize +2<CR>", "silent")
+    m.noremap("<leader><left>", ":resize -2<CR>", "silent")
 
     -- -- lazygit
     m.nnoremap("<leader>gg", ":LazyGit<CR>", "silent")
