@@ -10,6 +10,7 @@ vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 vim.opt.signcolumn = "yes"
 vim.opt.winbar = "%f %m"
+vim.opt.wrap = false 
 
 require("plugins")
 

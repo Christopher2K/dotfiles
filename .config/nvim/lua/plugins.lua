@@ -31,12 +31,10 @@ packer.startup(function()
     packer.use("b0o/mapx.nvim")
 
     -- Status bar
-    packer.use({
-        "nvim-lualine/lualine.nvim",
-        config = require("lualine_setup")
-    })
+    packer.use({"nvim-lualine/lualine.nvim", config = require("lualine_setup")})
 
     -- Native LSP
+    packer.use({"simrat39/rust-tools.nvim"}) -- Rust
     packer.use("williamboman/nvim-lsp-installer") -- Auto installer
     packer.use({"neovim/nvim-lspconfig", config = require("lsp_setup")}) -- Preconfig for LSPs
     packer.use({
@@ -80,16 +78,10 @@ packer.startup(function()
     require("telescope_setup")
 
     -- Comment
-    packer.use({
-        "numToStr/Comment.nvim",
-        config = require("comment_setup")
-    })
+    packer.use({"numToStr/Comment.nvim", config = require("comment_setup")})
 
     -- Surround
-    packer.use({
-        "ur4ltz/surround.nvim",
-        config = require("surround_setup")
-    })
+    packer.use({"ur4ltz/surround.nvim", config = require("surround_setup")})
 
     -- Kitty Conf Highlighting
     packer.use("fladson/vim-kitty")
@@ -107,23 +99,12 @@ packer.startup(function()
     })
 
     -- Git signals
-    packer.use({
-        "lewis6991/gitsigns.nvim",
-        config = require("gitsigns_setup")
-    })
+    packer.use({"lewis6991/gitsigns.nvim", config = require("gitsigns_setup")})
 
     -- Auto Save
     packer.use("907th/vim-auto-save")
 
     -- Autopairs
-    packer.use({
-        "windwp/nvim-autopairs",
-        config = require("autopairs_setup")
-    })
-
-    packer.use({
-        "simrat39/rust-tools.nvim",
-        config = require("rusttools_setup")
-    })
+    packer.use({"windwp/nvim-autopairs", config = require("autopairs_setup")})
 
 end)
