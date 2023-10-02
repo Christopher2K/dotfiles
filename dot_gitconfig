@@ -1,0 +1,11 @@
+[user]
+	email = me@christopher2k.dev
+	name = Christopher N. KATOYI KABA
+[pull]
+	rebase = true
+[core]
+	excludesFile = ~/.gitignore
+[init]
+	defaultBranch = main
+[includeIf "gitdir:~/Developer/MAPLE/"]
+        path = /Users/christopherkatoyikaba/Developer/MAPLE/.gitconfig-maple

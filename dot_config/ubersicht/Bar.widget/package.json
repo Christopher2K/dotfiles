@@ -1,0 +1,9 @@
+{
+  "name": "Bar.widget",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "2.29.3"
+  }
+}

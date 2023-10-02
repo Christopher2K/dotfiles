@@ -1,0 +1,59 @@
+# Focus spaces 
+alt - 0x21 : yabai -m space --focus prev # ALT + [
+alt - 0x1E : yabai -m space --focus next # ALT + ]
+
+# Focus display
+alt - g: yabai -m display --focus prev 
+alt - s: yabai -m display --focus next
+
+# Resize window
+hyper - q: yabai -m window --resize left:20:0 || yabai -m window --resize right:20:0
+hyper - w: yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
+
+# Reorganize windows
+alt - r : yabai -m space --rotate 90
+alt - f : yabai -m window --toggle float
+
+# Focus window
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north 
+alt - l : yabai -m window --focus east
+
+alt - m : yabai -m window --toggle zoom-fullscreen
+shift + alt - e : yabai -m space --balance
+
+# Moving windows
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west 
+shift + alt - l : yabai -m window --swap east
+
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - h : yabai -m window --warp west 
+ctrl + alt - l : yabai -m window --warp east
+
+# move window to left and right
+shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
+shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
+
+# move window to prev and next space (mouse is following)
+shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev 
+shift + alt - n : yabai -m window --space next; yabai -m space --focus next
+
+# move a window to a numbered space
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+shift + alt - 8 : yabai -m window --space 8
+
+# Apps shortcut
+hyper - t : open "/Applications/kitty.app"
+hyper - b : open "/Applications/Arc.app"
+hyper - f : open "/Applications/firefox.app"
+hyper - d : open "/Applications/discord.app"

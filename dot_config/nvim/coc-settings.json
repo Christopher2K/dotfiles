@@ -1,0 +1,22 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
+  "inlayHint.enable": true,
+  "inlayHint.display": true,
+  "inlayHint.enableParameter": true,
+  "inlayHint.refreshOnInsertMode": true,
+
+  "coc.preferences.formatOnSave": true,
+
+  "tsserver.log": "verbose",
+  "tsserver.useLocalTsdk": true,
+
+  "typescript.format.enable": false,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "Lua.telemetry.enable": false
+}
