@@ -1,6 +1,6 @@
 return {
   "echasnovski/mini.comment",
-  version = false,
+  version = "0.10.0",
   main = "mini.comment",
   config = true,
 }

@@ -1,7 +1,7 @@
 return {
   "utilyre/barbecue.nvim",
   name = "barbecue",
-  version = "*",
+  version = "1.2.0",
   dependencies = {
     "SmiteshP/nvim-navic",
     "nvim-tree/nvim-web-devicons", -- optional dependency

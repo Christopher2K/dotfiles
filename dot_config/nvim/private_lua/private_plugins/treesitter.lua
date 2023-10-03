@@ -1,8 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- dependencies = {
-  --   "JoosepAlviste/nvim-ts-context-commentstring",
-  -- },
+  version = "0.9.1",
   config = function()
     local ts = require("nvim-treesitter.configs")
 

@@ -8,6 +8,8 @@
 
   "coc.preferences.formatOnSave": true,
 
+  "stylua.styluaPath": "/opt/homebrew/bin/stylua",
+
   "tsserver.log": "verbose",
   "tsserver.useLocalTsdk": true,
 
@@ -18,5 +20,6 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.enumMemberValues.enabled": true,
+
   "Lua.telemetry.enable": false
 }

@@ -1,7 +1,8 @@
 return {
   "echasnovski/mini.surround",
+  commit = "9d1956b576d7051da3a483b251dfc778121c60db",
   version = false,
-  main = 'mini.surround',
+  main = "mini.surround",
   opts = {
     mappings = {
       add = "gza", -- Add surrounding in Normal and Visual modes

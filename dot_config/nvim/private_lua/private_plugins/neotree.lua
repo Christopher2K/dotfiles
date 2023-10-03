@@ -5,7 +5,7 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
-  version = "v2.x",
+  version = "3.7",
   keys = {
     {
       "<leader>e",

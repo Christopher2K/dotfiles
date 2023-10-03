@@ -1,5 +1,6 @@
 return {
   "github/copilot.vim",
+  version = "1.10.2",
   enabled = false,
   keys = {
     {

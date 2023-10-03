@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  commit = "8c69f58427f98b2ca39a90a36db830c06e30351c",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
@@ -7,11 +8,11 @@ return {
     "nvim-telescope/telescope-project.nvim",
   },
   keys = {
-    { "<leader>fd", ":Telescope file_browser<CR>", silent = true, desc = "Open file browser (project dir)"},
-    { "<leader>fb", ":Telescope file_browser path=%:p:h<CR>", silent = true, desc = "Open file browser (current dir)"},
-    { "<leader>ff", ":Telescope find_files<CR>", silent = true, desc = "Find file"},
-    { "<leader>fg", ":Telescope live_grep<CR>", silent = true, desc = "Live grep"},
-    { "<leader>bf", ":Telescope buffers<CR>", silent = true, desc = "Open buffer browser"},
+    { "<leader>fd", ":Telescope file_browser<CR>", silent = true, desc = "Open file browser (project dir)" },
+    { "<leader>fb", ":Telescope file_browser path=%:p:h<CR>", silent = true, desc = "Open file browser (current dir)" },
+    { "<leader>ff", ":Telescope find_files<CR>", silent = true, desc = "Find file" },
+    { "<leader>fg", ":Telescope live_grep<CR>", silent = true, desc = "Live grep" },
+    { "<leader>bf", ":Telescope buffers<CR>", silent = true, desc = "Open buffer browser" },
   },
   config = function()
     local telescope = require("telescope")
