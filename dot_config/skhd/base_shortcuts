@@ -54,6 +54,5 @@ shift + alt - 8 : yabai -m window --space 8
 
 # Apps shortcut
 hyper - t : open "/Applications/kitty.app"
-hyper - b : open "/Applications/Arc.app"
-hyper - f : open "/Applications/firefox.app"
+hyper - b : open "/Applications/firefox.app"
 hyper - d : open "/Applications/discord.app"
