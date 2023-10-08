@@ -1,6 +1,9 @@
 {
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
+
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
+
   "inlayHint.enable": true,
   "inlayHint.display": true,
   "inlayHint.enableParameter": true,
