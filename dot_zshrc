@@ -75,5 +75,8 @@ delete_localonly_branches () {
 }
 alias delete_localonly_branch="delete_localonly_branches"
 
+# Erlang and Elixir
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # PROMPT
 eval "$(starship init zsh)"
