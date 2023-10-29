@@ -4,6 +4,8 @@ return {
   config = function()
     -- Some servers have issues with backup files, see #649S
     vim.g.coc_global_extensions = {
+      "coc-pairs",
+      "coc-elixir",
       "coc-tsserver",
       "coc-json",
       "coc-docker",
