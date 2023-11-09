@@ -10,11 +10,7 @@ yabai -m config right_padding 12
 yabai -m config window_gap 12
 
 # Border color
-yabai -m config window_border on
-yabai -m config normal_window_border_color 0x00FFBF00
-yabai -m config active_window_border_color 0xFFFFBF00
 yabai -m config window_shadow off
-yabai -m config window_border_blur off
 
 yabai -m config mouse_follows_focus off
 # yabai -m config mouse_modifier ctrl
