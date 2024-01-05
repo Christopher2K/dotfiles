@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  tag = "v0.6",
+  tag = "v0.7",
   opts = {
     signs = {
       add = {

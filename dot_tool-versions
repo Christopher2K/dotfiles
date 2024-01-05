@@ -1,11 +1,12 @@
 chezmoi 2.40.0
-nodejs 16.14.2
+nodejs 20.10.0
 rust 1.65.0
 java adoptopenjdk-11.0.16+8
 python 3.10.7
-neovim 0.9.2
+neovim 0.9.5
 pnpm 8.5.1
 golang 1.20.3
 bun 0.7.1
 elixir 1.15.5-otp-26
 erlang 26.0.2
+ocaml 5.1.0
