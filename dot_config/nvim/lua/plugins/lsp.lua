@@ -90,7 +90,7 @@ return {
 
     -- Helper functions
     local check_eslint_config = function(utils)
-      return utils.root_has_file({ ".eslintrc", ".eslint.js" })
+      return utils.root_has_file({ ".eslintrc", ".eslintrc.js" })
     end
 
     local nullls_format = function(bufnr)
