@@ -93,6 +93,10 @@ return {
       return utils.root_has_file({ ".eslintrc", ".eslintrc.js" })
     end
 
+    local check_prettier_config = function(utils)
+      return utils.root_has_file({ ".prettierrc", ".prettierrc.js" })
+    end
+
     local nullls_format = function(bufnr)
       vim.lsp.buf.format({
         async = true,
@@ -119,12 +123,16 @@ return {
     -- End helper functions
 
     -- Linting & Formatting using NullLS
-    local formatting_augroup = vim.api.nvim_create_augroup("lsp-formatting", {})
     null_ls.setup({
       debug = true,
       sources = {
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with({
+          condition = check_prettier_config,
+        }),
+        null_ls.builtins.formatting.eslint_d.with({
+          condition = check_eslint_config,
+        }),
         null_ls.builtins.diagnostics.eslint_d.with({
           condition = check_eslint_config,
         }),
