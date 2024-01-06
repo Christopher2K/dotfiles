@@ -4,7 +4,6 @@ return {
   dependencies = {
     { "neovim/nvim-lspconfig",             tag = "v0.1.7" },
     { "williamboman/mason-lspconfig.nvim", tag = "v1.26.0" },
-    { "nvimtools/none-ls.nvim",            commit = "fbdcbf8e152529af846b3a333f039751829b84c2" },
     { "hrsh7th/nvim-cmp",                  commit = "538e37ba87284942c1d76ed38dd497e54e65b891" },
     { "hrsh7th/cmp-nvim-lsp",              commit = "5af77f54de1b16c34b23cba810150689a3a90312" },
     { "L3MON4D3/LuaSnip",                  tag = "v2.2.0" },
@@ -27,12 +26,6 @@ return {
       "yamlls",
     }
 
-    -- List of LSP servers that are using nullLS in lieu of their own formatting
-    -- features
-    local disabled_formatting_servers = {
-      tsserver = true,
-    }
-
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = servers_list,
@@ -41,7 +34,6 @@ return {
     local luasnip = require("luasnip")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_config = require("lspconfig")
-    local null_ls = require("null-ls")
 
     -- Completion engine setup
     cmp.setup({
@@ -88,61 +80,6 @@ return {
     })
     -- End completion engine setup
 
-    -- Helper functions
-    local check_eslint_config = function(utils)
-      return utils.root_has_file({ ".eslintrc", ".eslintrc.js" })
-    end
-
-    local check_prettier_config = function(utils)
-      return utils.root_has_file({ ".prettierrc", ".prettierrc.js" })
-    end
-
-    local nullls_format = function(bufnr)
-      vim.lsp.buf.format({
-        async = true,
-        filter = function(client)
-          return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-      })
-    end
-
-    local formatting_augroup = vim.api.nvim_create_augroup("lsp-formatting", {})
-    local setup_autoformat = function(client, bufnr)
-      if client.supports_method("textdocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = formatting_augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("bufwritepre", {
-          group = formatting_augroup,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format({ async = false })
-          end,
-        })
-      end
-    end
-    -- End helper functions
-
-    -- Linting & Formatting using NullLS
-    null_ls.setup({
-      debug = true,
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd.with({
-          condition = check_prettier_config,
-        }),
-        null_ls.builtins.formatting.eslint_d.with({
-          condition = check_eslint_config,
-        }),
-        null_ls.builtins.diagnostics.eslint_d.with({
-          condition = check_eslint_config,
-        }),
-      },
-      on_attach = function(client, bufnr)
-        vim.keymap.set("n", "F", nullls_format, { desc = "Format" })
-        setup_autoformat(client, bufnr)
-      end,
-    })
-
     -- Global key mapping
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
@@ -160,18 +97,6 @@ return {
       vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = buffer })
       vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = buffer })
       vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Check references", buffer = buffer })
-
-      -- Apply formatting strategy according to the tables mentionned earlier in the file
-      if disabled_formatting_servers[client.name] then
-        -- Disable regular lsp formatting for language using nullLS
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      else
-        vim.keymap.set("n", "F", function()
-          vim.lsp.buf.format({ async = true })
-        end, { desc = "Format", buffer = buffer })
-        setup_autoformat(client, buffer)
-      end
     end
 
     for _, value in pairs(servers_list) do
