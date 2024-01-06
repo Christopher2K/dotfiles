@@ -6,10 +6,10 @@ return {
   },
   opts = {
     formatters_by_ft = {
-      javascript = { { "eslint_c", "prettierd" } },
-      javascriptreact = { { "eslint_c", "prettierd" } },
-      typescript = { { "eslint_c", "prettierd" } },
-      typescriptreact = { { "eslint_c", "prettierd" } },
+      javascript = { { "eslint_c", "prettier" } },
+      javascriptreact = { { "eslint_c", "prettier" } },
+      typescript = { { "eslint_c", "prettier" } },
+      typescriptreact = { { "eslint_c", "prettier" } },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
@@ -30,6 +30,9 @@ return {
           ".eslintrc",
           ".eslintrc.js",
         }),
+        condition = function(self, ctx)
+          return util.root_file({ ".eslintrc", ".eslintrc.js" })(self, ctx) ~= nil
+        end
       }
     }
 
