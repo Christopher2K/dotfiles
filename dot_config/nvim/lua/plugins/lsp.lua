@@ -80,7 +80,15 @@ return {
     })
     -- End completion engine setup
 
+    -- Diagnostic customization
+    vim.diagnostic.config({
+      float = {
+        source = true
+      },
+    })
+
     -- Global key mapping
+    vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "open diagnostic popup" })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
@@ -90,12 +98,12 @@ return {
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = buffer })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = buffer })
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = buffer })
-      vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { desc = "Rename", buffer = buffer })
-      vim.keymap.set("n", "<space>wl", function()
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename", buffer = buffer })
+      vim.keymap.set("n", "<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, { desc = "List workspace folders", buffer = buffer })
-      vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = buffer })
-      vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = buffer })
+      vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = buffer })
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = buffer })
       vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Check references", buffer = buffer })
     end
 
