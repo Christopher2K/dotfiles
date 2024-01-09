@@ -3,13 +3,13 @@ return {
   tag = "3.14",
   lazy = false,
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle position=float<cr>", desc = "Toggle Neotree" },
+    { "<leader>e", "<cmd>Neotree toggle reveal position=float<cr>", desc = "Toggle Neotree" },
   },
   opts = {
     filesystem = {
       follow_current_file = {
         enabled = true,
-        leave_dirs_open = true,
+        leave_dirs_open = false,
       },
     },
   },
