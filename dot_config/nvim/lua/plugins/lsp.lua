@@ -2,26 +2,27 @@ return {
   "williamboman/mason.nvim",
   tag = "v1.8.3",
   dependencies = {
-    { "neovim/nvim-lspconfig",             tag = "v0.1.7" },
-    { "williamboman/mason-lspconfig.nvim", tag = "v1.26.0" },
+    { "neovim/nvim-lspconfig",             commit = "f4619ab31fc4676001ea05ae8200846e6e7700c7" },
+    { "williamboman/mason-lspconfig.nvim", tag = "v1.27.0" },
     { "hrsh7th/nvim-cmp",                  commit = "538e37ba87284942c1d76ed38dd497e54e65b891" },
     { "hrsh7th/cmp-nvim-lsp",              commit = "5af77f54de1b16c34b23cba810150689a3a90312" },
     { "L3MON4D3/LuaSnip",                  tag = "v2.2.0" },
+    { "elixir-tools/elixir-tools.nvim",    tag = "v0.13.2" },
+    { "pmizio/typescript-tools.nvim",      commit = "c43d9580c3ff5999a1eabca849f807ab33787ea7" },
   },
   config = function()
     -- Default server
     local servers_list = {
+      "astro",
       "cssls",
       "docker_compose_language_service",
       "dockerls",
-      "elixirls",
       "html",
       "jsonls",
       "lua_ls",
       "pyright",
       "svelte",
       "tailwindcss",
-      "tsserver",
       "volar",
       "yamlls",
     }
@@ -114,5 +115,40 @@ return {
         on_attach = on_attach_callback,
       })
     end
+
+    -- Language specific extensions
+    local elixir = require("elixir")
+    local elixirls = require("elixir.elixirls")
+
+    elixir.setup {
+      nextls = {
+        enable = false,
+        on_attach = on_attach_callback,
+        init_options = {
+          mix_env = "dev",
+          mix_target = "host",
+          experimental = {
+            completions = {
+              enable = true -- control if completions are enabled. defaults to false
+            }
+          }
+        },
+
+      },
+      credo = {},
+      elixirls = {
+        enable = true,
+        settings = elixirls.settings {
+          dialyzerEnabled = false,
+          enableTestLenses = false,
+        },
+        on_attach = on_attach_callback
+      }
+    }
+
+    local tstools = require("typescript-tools")
+    tstools.setup({
+      on_attach = on_attach_callback
+    })
   end,
 }

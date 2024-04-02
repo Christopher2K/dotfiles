@@ -29,3 +29,7 @@ keys.init()
 
 local autocmds = require("nvim-autocmds")
 autocmds.init()
+
+
+local filetypes = require("nvim-filetypes")
+filetypes.init()

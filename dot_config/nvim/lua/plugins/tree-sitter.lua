@@ -16,6 +16,7 @@ return {
       "elixir",
       "php",
       "go",
+      "gleam",
       "rust",
       "jsdoc",
       "json",

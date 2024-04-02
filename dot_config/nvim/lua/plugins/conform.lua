@@ -10,6 +10,11 @@ return {
       javascriptreact = { { "eslint_c", "prettier" } },
       typescript = { { "eslint_c", "prettier" } },
       typescriptreact = { { "eslint_c", "prettier" } },
+      mdx = { { "prettier" } },
+      md = { { "prettier" } },
+      json = { { "prettier" } },
+      astro = { { "prettier" } },
+      css = { { "prettier" } }
     },
     format_on_save = {
       quiet = true,
