@@ -11,8 +11,18 @@ return {
   },
   config = function()
     local pick = require("mini.pick")
-    pick.setup()
+    pick.setup({
+      window = {
+        config = {
+          border = "rounded",
+        }
+      }
+    })
     local extra = require("mini.extra")
     extra.setup()
+
+    -- Because of gruvbox fix some highlighting issue
+    vim.cmd("highlight clear MiniPickNormal")
+    vim.cmd("highlight link MiniPickNormal Normal")
   end,
 }

@@ -24,12 +24,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 -- End lazy initialization
 
+local usercommand = require("nvim-usercmd")
+usercommand.init()
+
 local keys = require("nvim-keys")
 keys.init()
 
 local autocmds = require("nvim-autocmds")
 autocmds.init()
-
 
 local filetypes = require("nvim-filetypes")
 filetypes.init()

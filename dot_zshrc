@@ -1,39 +1,30 @@
 ## CONFIG
 export GITHUB_USERNAME="christopher2k"
-
 export ZSH="$HOME/.oh-my-zsh"
-
-## HOMEBREW
-export PATH="/opt/homebrew/bin:$PATH"
-
 ZSH_THEME="robbyrussell"
-
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
+plugins=()
 
 export EDITOR=nvim
 export NVIM_CONFIG="$HOME/.config/nvim/init.lua"
 
+source $ZSH/oh-my-zsh.sh
+
+## HOMEBREW
+export PATH="/opt/homebrew/bin:$PATH"
+
+## HOME BIN
+export PATH="$HOME/bin:$PATH"
+
 ## CUSTOM VARS
 export DEV="$HOME/Developer"
-export WALLPAPER="$HOME/Pictures/Wallpapers/BlueDay.jpg"
 
-# ASDF Configuration
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-# ASDF Ruby
-# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
-# USING FRUM for ruby since ruby-env is broken for m1
-eval "$(frum init)"
+## MiseEnPlace
+eval "$($HOME/.local/bin/mise activate zsh)"
 
 # ASDF DEFAULTS
 export ASDF_DEFAULTS_ROOT="$HOME/.config/asdf"
 export ASDF_GEM_DEFAULT_PACKAGES_FILE="$ASDF_DEFAULTS_ROOT/.default-gems"
 export ASDF_CRATE_DEFAULT_PACKAGES_FILE="$ASDF_DEFAULTS_ROOT/.default-cargo-crates"
-
-# ASDF JAVA plugin
-. "$HOME/.asdf/plugins/java/set-java-home.zsh"
 
 ## ANDROID
 export ANDROID_ROOT="$HOME/Library/Android"
@@ -41,9 +32,6 @@ export ANDROID_SDK_ROOT="$ANDROID_ROOT/sdk"
 export ANDROID_PLATFORM_TOOLS="$ANDROID_SDK_ROOT/platform-tools"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_PLATFORM_TOOLS"
-
-## Flutter
-export PATH="$PATH:$DEV_RESOURCES/flutter/bin"
 
 ## HOMEBREW CONFIG
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -78,5 +66,9 @@ alias delete_localonly_branch="delete_localonly_branches"
 # Erlang and Elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# FZF Config
+eval "$(fzf --zsh)"
+
 # PROMPT
 eval "$(starship init zsh)"
+

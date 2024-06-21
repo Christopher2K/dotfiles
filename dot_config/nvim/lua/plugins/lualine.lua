@@ -1,6 +1,5 @@
 return {
   "nvim-lualine/lualine.nvim",
-  commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
   config = function()
     local lualine = require("lualine")
 
@@ -16,7 +15,7 @@ return {
     lualine.setup({
       options = {
         icons_enabled = true,
-        theme = "catppuccin",
+        theme = "gruvbox",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {},

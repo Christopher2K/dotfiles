@@ -4,7 +4,6 @@ return {
   dependencies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
-      commit = "1277b4a1f451b0f18c0790e1a7f12e1e5fdebfee",
     },
   },
   config = function()

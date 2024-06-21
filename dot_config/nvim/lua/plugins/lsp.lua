@@ -1,18 +1,18 @@
 return {
   "williamboman/mason.nvim",
-  tag = "v1.8.3",
   dependencies = {
-    { "neovim/nvim-lspconfig",             commit = "f4619ab31fc4676001ea05ae8200846e6e7700c7" },
-    { "williamboman/mason-lspconfig.nvim", tag = "v1.27.0" },
-    { "hrsh7th/nvim-cmp",                  commit = "538e37ba87284942c1d76ed38dd497e54e65b891" },
-    { "hrsh7th/cmp-nvim-lsp",              commit = "5af77f54de1b16c34b23cba810150689a3a90312" },
-    { "L3MON4D3/LuaSnip",                  tag = "v2.2.0" },
-    { "elixir-tools/elixir-tools.nvim",    tag = "v0.13.2" },
-    { "pmizio/typescript-tools.nvim",      commit = "c43d9580c3ff5999a1eabca849f807ab33787ea7" },
+    { "neovim/nvim-lspconfig", },
+    { "williamboman/mason-lspconfig.nvim", },
+    { "hrsh7th/nvim-cmp", },
+    { "hrsh7th/cmp-nvim-lsp", },
+    { "L3MON4D3/LuaSnip", },
+    { "elixir-tools/elixir-tools.nvim", },
+    { "pmizio/typescript-tools.nvim", },
+    { "mrcjkb/rustaceanvim",               lazy = false }
   },
   config = function()
     -- Default server
-    local servers_list = {
+    local managed_servers_list = {
       "astro",
       "cssls",
       "docker_compose_language_service",
@@ -27,9 +27,18 @@ return {
       "yamlls",
     }
 
+    local manual_servers_list = {
+      "ocamllsp",
+      "gleam"
+    }
+
+    local servers_list = {}
+    table.move(managed_servers_list, 1, #managed_servers_list, 1, servers_list)
+    table.move(manual_servers_list, 1, #manual_servers_list, #servers_list + 1, servers_list)
+
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = servers_list,
+      ensure_installed = managed_servers_list,
     })
     local cmp = require("cmp")
     local luasnip = require("luasnip")
@@ -84,7 +93,8 @@ return {
     -- Diagnostic customization
     vim.diagnostic.config({
       float = {
-        source = true
+        source = true,
+        border = "rounded",
       },
     })
 
@@ -92,6 +102,24 @@ return {
     vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "open diagnostic popup" })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+
+    -- Custom handlers to have border around hover window
+    local border = {
+      { "╭", "FloatBorder" },
+      { "─", "FloatBorder" },
+      { "╮", "FloatBorder" },
+      { "│", "FloatBorder" },
+      { "╯", "FloatBorder" },
+      { "─", "FloatBorder" },
+      { "╰", "FloatBorder" },
+      { "│", "FloatBorder" },
+    }
+
+    local handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = border,
+      }),
+    }
 
     -- Callback executed when a server is attached to a buffer
     local on_attach_callback = function(client, buffer)
@@ -113,6 +141,7 @@ return {
       server.setup({
         capabilities = capabilities,
         on_attach = on_attach_callback,
+        handlers = handlers,
       })
     end
 
@@ -124,6 +153,7 @@ return {
       nextls = {
         enable = false,
         on_attach = on_attach_callback,
+        handlers = handlers,
         init_options = {
           mix_env = "dev",
           mix_target = "host",
@@ -142,13 +172,24 @@ return {
           dialyzerEnabled = false,
           enableTestLenses = false,
         },
-        on_attach = on_attach_callback
+        on_attach = on_attach_callback,
+        handlers = handlers,
       }
     }
 
     local tstools = require("typescript-tools")
     tstools.setup({
-      on_attach = on_attach_callback
+      on_attach = on_attach_callback,
+      handlers = handlers,
     })
+
+    -- Rust setup
+    vim.g.rustaceanvim = {
+      -- LSP configuration
+      server = {
+        on_attach = on_attach_callback,
+        handlers = handlers,
+      },
+    }
   end,
 }

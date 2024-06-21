@@ -6,6 +6,7 @@ return {
   },
   opts = {
     formatters_by_ft = {
+      python = { { "autopep8" } },
       javascript = { { "eslint_c", "prettier" } },
       javascriptreact = { { "eslint_c", "prettier" } },
       typescript = { { "eslint_c", "prettier" } },

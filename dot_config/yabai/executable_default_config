@@ -9,6 +9,43 @@ yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 12
 
+STREAMING_PAD=20
+STREAMING_RIGHT_PAD=664
+
+# Streaming setup
+# yabai -m config --space 1 top_padding $STREAMING_PAD
+# yabai -m config --space 1 left_padding $STREAMING_PAD
+# yabai -m config --space 1 bottom_padding $STREAMING_PAD
+# yabai -m config --space 1 right_padding $STREAMING_RIGHT_PAD
+#
+# yabai -m config --space 2 top_padding $STREAMING_PAD
+# yabai -m config --space 2 left_padding $STREAMING_PAD
+# yabai -m config --space 2 bottom_padding $STREAMING_PAD
+# yabai -m config --space 2 right_padding $STREAMING_RIGHT_PAD
+#
+# yabai -m config --space 3 top_padding $STREAMING_PAD
+# yabai -m config --space 3 left_padding $STREAMING_PAD
+# yabai -m config --space 3 bottom_padding $STREAMING_PAD
+# yabai -m config --space 3 right_padding $STREAMING_RIGHT_PAD
+#
+# yabai -m config --space 4 top_padding $STREAMING_PAD
+# yabai -m config --space 4 left_padding $STREAMING_PAD
+# yabai -m config --space 4 bottom_padding $STREAMING_PAD
+# yabai -m config --space 4 right_padding $STREAMING_RIGHT_PAD
+
+# Youtube Setup
+# yabai -m config --space 1 right_padding 612
+# yabai -m config --space 1 bottom_padding 12
+#
+# yabai -m config --space 2 right_padding 612
+# yabai -m config --space 2 bottom_padding 12
+#
+# yabai -m config --space 3 right_padding 610
+# yabai -m config --space 3 bottom_padding 12
+#
+# yabai -m config --space 4 right_padding 612
+# yabai -m config --space 4 bottom_padding 12
+
 # Border color
 yabai -m config window_shadow off
 
@@ -29,3 +66,19 @@ yabai -m rule --add app="^Web Inspector.*" manage=off
 yabai -m rule --add app="^Concentration$" manage=off
 yabai -m rule --add app="^CoScreen$" manage=off
 yabai -m rule --add app="^WakfuClient$" manage=off
+
+
+# INTEGRATIONS
+refresh_widget_command="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"Bar-jsx\"'"
+
+yabai -m signal --add event=space_changed action="$refresh_widget_command"
+yabai -m signal --add event=space_created action="$refresh_widget_command"
+yabai -m signal --add event=space_destroyed action="$refresh_widget_command"
+
+yabai -m signal --add event=display_added action="$refresh_widget_command"
+yabai -m signal --add event=display_remove daction="$refresh_widget_command"
+yabai -m signal --add event=display_changed action="$refresh_widget_command"
+yabai -m signal --add event=display_resized action="$refresh_widget_command"
+
+yabai -m signal --add event=window_focused action="$refresh_widget_command"
+
