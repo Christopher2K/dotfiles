@@ -1,3 +1,44 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
+STREAMING_PAD=20
+STREAMING_BOTTOM_PAD=80
+STREAMING_RIGHT_PAD=664
+
+# Streaming setup
+
+if [ -f "$HOME/.stream_mode" ]; then
+  yabai -m config --space 1 top_padding $STREAMING_PAD
+  yabai -m config --space 1 left_padding $STREAMING_PAD
+  yabai -m config --space 1 bottom_padding $STREAMING_BOTTOM_PAD
+  yabai -m config --space 1 right_padding $STREAMING_RIGHT_PAD
+
+  yabai -m config --space 2 top_padding $STREAMING_PAD
+  yabai -m config --space 2 left_padding $STREAMING_PAD
+  yabai -m config --space 2 bottom_padding $STREAMING_BOTTOM_PAD
+  yabai -m config --space 2 right_padding $STREAMING_RIGHT_PAD
+
+  yabai -m config --space 3 top_padding $STREAMING_PAD
+  yabai -m config --space 3 left_padding $STREAMING_PAD
+  yabai -m config --space 3 bottom_padding $STREAMING_BOTTOM_PAD
+  yabai -m config --space 3 right_padding $STREAMING_RIGHT_PAD
+
+  yabai -m config --space 4 top_padding $STREAMING_PAD
+  yabai -m config --space 4 left_padding $STREAMING_PAD          
+  yabai -m config --space 4 bottom_padding $STREAMING_BOTTOM_PAD
+  yabai -m config --space 4 right_padding $STREAMING_RIGHT_PAD
+fi
+
+# Youtube Setup
+# yabai -m config --space 1 right_padding 612
+# yabai -m config --space 1 bottom_padding 12
+#
+# yabai -m config --space 2 right_padding 612
+# yabai -m config --space 2 bottom_padding 12
+#
+# yabai -m config --space 3 right_padding 610
+# yabai -m config --space 3 bottom_padding 12
+#
+# yabai -m config --space 4 right_padding 612
+# yabai -m config --space 4 bottom_padding 12
+
 sudo yabai --load-sa

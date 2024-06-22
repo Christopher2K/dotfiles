@@ -1,0 +1,27 @@
+# This script is used to start the stream mode
+# It will write a temporary file to the home directory
+# Usage: ./stream_mode.sh enable|disable
+
+restart_all_services() {
+    echo "Restarting all services..."
+    yabai --restart-service
+}
+
+
+if [ $# -ne 1 ]; then
+    echo "Usage: ./stream_mode.sh enable|disable"
+    exit 1
+fi
+
+if [ "$1" = "enable" ]; then
+    echo "Enabling stream mode..."
+    touch ~/.stream_mode
+    restart_all_services
+elif [ "$1" = "disable" ]; then
+    echo "Disabling stream mode..."
+    rm ~/.stream_mode
+    restart_all_services
+else
+    echo "Usage: ./stream_mode.sh enable|disable"
+    exit 1
+fi

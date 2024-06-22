@@ -12,6 +12,9 @@ source $ZSH/oh-my-zsh.sh
 ## HOMEBREW
 export PATH="/opt/homebrew/bin:$PATH"
 
+## CUSTOM SCRIPTS
+export PATH="$HOME/Scripts:$PATH"
+
 ## HOME BIN
 export PATH="$HOME/bin:$PATH"
 
