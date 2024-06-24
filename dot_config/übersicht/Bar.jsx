@@ -171,7 +171,10 @@ export const render = ({
   const isStreamerMode = streamerMode && screen?.index === 1;
 
   return (
-    <Root isFocused={screen?.hasFocus} isStreamerMode={isStreamerMode}>
+    <Root
+      isFocused={screen?.hasFocus == null ? true : screen?.hasFocus}
+      isStreamerMode={isStreamerMode}
+    >
       <Content isStreamerMode={isStreamerMode}>
         <WidgetLeftContainer>
           {screen && <Screen.SpacesWidget screen={screen} />}

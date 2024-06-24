@@ -44,7 +44,7 @@ export async function getScreensAndSpaces() {
 
   return {
     index: screen.index,
-    hasFocus: screen["has-focus"],
+    hasFocus: screen["has-focus"] ?? null,
     spaces: spaces.map((space) => {
       return {
         index: space.index,
