@@ -2,3 +2,4 @@
 **/.yarn/*
 **/skhdrc
 **/yabairc
+**/.elixir-tools/*
