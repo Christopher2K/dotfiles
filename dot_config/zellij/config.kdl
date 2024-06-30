@@ -22,10 +22,10 @@ keybinds {
     }
     pane {
         bind "Ctrl p" { SwitchToMode "Normal"; }
-        bind "h" "Left" { MoveFocus "Left"; }
-        bind "l" "Right" { MoveFocus "Right"; }
-        bind "j" "Down" { MoveFocus "Down"; }
-        bind "k" "Up" { MoveFocus "Up"; }
+        bind "h" "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "l" "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "j" "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "k" "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "p" { SwitchFocus; }
         bind "n" { NewPane; SwitchToMode "Normal"; }
         bind "d" { NewPane "Down"; SwitchToMode "Normal"; }
@@ -49,8 +49,8 @@ keybinds {
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-        bind "h" "Left" "Up" "k" { GoToPreviousTab; }
-        bind "l" "Right" "Down" "j" { GoToNextTab; }
+        bind "h" "Left" "Up" "k" { GoToPreviousTab; SwitchToMode "Normal"; }
+        bind "l" "Right" "Down" "j" { GoToNextTab; SwitchToMode "Normal"; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
         bind "x" { CloseTab; SwitchToMode "Normal"; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }

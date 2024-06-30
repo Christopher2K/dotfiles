@@ -33,4 +33,18 @@ layout {
             }
         }
     }
+
+
+
+    tab name="Editor" {
+
+    }
+
+    tab name="Bundlers" {
+
+    }
+
+    tab name="Tests" {
+
+    }
 }
