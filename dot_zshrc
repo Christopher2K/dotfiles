@@ -75,3 +75,18 @@ eval "$(fzf --zsh)"
 # PROMPT
 eval "$(starship init zsh)"
 
+### CUSTOM FUNCTIONS
+#
+# Start or attach to a project folder using Zellij and the dev layout
+# $1 - project path
+function project() {
+  project_path=$1
+  split_path=(${(s:/:)project_path})
+  project_name=${split_path[-1]}
+
+  cd $project_path
+
+  zellij a $project_name || zellij -l dev -s $project_name
+}
+alias p="project"
+
