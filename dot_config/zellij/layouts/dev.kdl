@@ -2,7 +2,7 @@ layout {
     default_tab_template {
         children
         pane size=1 borderless=true {
-            plugin location="file:/$HOME/.config/zellij/plugins/zjstatus.wasm" {
+            plugin location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "{mode} #[fg=#000000,bold]{session}"
                 format_center "{tabs}"
                 format_right  "{datetime}"
@@ -36,15 +36,18 @@ layout {
 
 
 
-    tab name="Editor" {
-
+    tab name="Editor" focus=true {
+        pane size=1 borderless=true {
+            command "nvim"
+        }
     }
 
     tab name="Bundlers" {
+        pane size=1 borderless=true
 
     }
 
     tab name="Tests" {
-
+        pane size=1 borderless=true
     }
 }
