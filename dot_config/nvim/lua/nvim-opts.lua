@@ -18,6 +18,7 @@ function opts.init()
   vim.opt.expandtab = true -- Use spaces instead of tabs
   vim.opt.smartindent = true -- Insert indents automatically
   vim.opt.winbar = "" -- Disable winbar
+  vim.opt.mousescroll = "ver:3,hor:0" -- Disable horizontal mouse scrolling
 end
 
 return opts

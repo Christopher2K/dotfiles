@@ -90,3 +90,8 @@ function project() {
 }
 alias p="project"
 
+# Open nvim config
+alias nvim_config="nvim -c \"cd $HOME/.config/nvim\" $HOME/.config/nvim/init.lua"
+
+# Open zsh config
+alias zsh_config="nvim $HOME/.zshrc"
