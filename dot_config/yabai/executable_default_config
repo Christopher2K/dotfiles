@@ -24,6 +24,8 @@ yabai -m rule --add app="^Web Inspector.*" manage=off
 yabai -m rule --add app="^Concentration$" manage=off
 yabai -m rule --add app="^CoScreen$" manage=off
 yabai -m rule --add app="^WakfuClient$" manage=off
+yabai -m rule --add app="^Alacritty$" space=^1
+yabai -m rule --add app="^Arc$" space=^2
 
 
 # INTEGRATIONS
