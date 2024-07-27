@@ -22,7 +22,7 @@ export PATH="$HOME/bin:$PATH"
 export DEV="$HOME/Developer"
 
 ## MiseEnPlace
-eval "$($HOME/.local/bin/mise activate zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # ASDF DEFAULTS
 export ASDF_DEFAULTS_ROOT="$HOME/.config/asdf"

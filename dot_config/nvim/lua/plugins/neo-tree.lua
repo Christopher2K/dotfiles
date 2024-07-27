@@ -5,6 +5,8 @@ return {
     { "<leader>e", "<cmd>Neotree toggle reveal position=float<cr>", desc = "Toggle Neotree" },
   },
   opts = {
+    enable_diagnostics = false,
+    enable_git_status = false,
     filesystem = {
       follow_current_file = {
         enabled = true,

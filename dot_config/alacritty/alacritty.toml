@@ -6,7 +6,7 @@ shell = "/bin/zsh"
 live_config_reload = true
 
 [window]
-padding = { x = 10, y = 10 }
+padding = { x = 4, y = 10 }
 dynamic_padding = true
 decorations = "Buttonless"
 blur = true
