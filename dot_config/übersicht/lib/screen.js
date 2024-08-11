@@ -19,31 +19,33 @@ const AEROSPACE_COMMAND = "/opt/homebrew/bin/aerospace";
 const queryAerospace = (command) => run(`${AEROSPACE_COMMAND} ${command}`);
 
 export async function getScreensAndSpaces() {
-  const currentBarMonitorIndex =
-    (await run(`system_profiler SPDisplaysDataType -json`)
-      .then(JSON.parse)
-      .then((result) =>
-        result.SPDisplaysDataType[0].spdisplays_ndrvs.findIndex((display) => {
-          const [width, height] = display._spdisplays_resolution
-            .split(" @ ")
-            .at(0)
-            .split(" x ");
+  const [_currentBarMonitorIndex, monitorFocusedResult, focusedSpaceResult] =
+    await Promise.all([
+      run(`system_profiler SPDisplaysDataType -json`)
+        .then(JSON.parse)
+        .then((result) =>
+          result.SPDisplaysDataType[0].spdisplays_ndrvs.findIndex((display) => {
+            const [width, height] = display._spdisplays_resolution
+              .split(" @ ")
+              .at(0)
+              .split(" x ");
 
-          return (
-            +width === window.screen.width && +height === window.screen.height
-          );
-        }),
-      )) + 1;
+            return (
+              +width === window.screen.width && +height === window.screen.height
+            );
+          }),
+        ),
+      queryAerospace("list-monitors --focused"),
+      queryAerospace("list-workspaces --focused"),
+    ]);
 
-  const monitorFocusedResult = await queryAerospace("list-monitors --focused");
+  const currentBarMonitorIndex = _currentBarMonitorIndex + 1;
   const monitorFocusedId = +monitorFocusedResult
     .split("\n")
     .at(0)
     .trim()
     .split(" | ")
     .at(0);
-
-  const focusedSpaceResult = await queryAerospace("list-workspaces --focused");
   const focusedSpaceId = focusedSpaceResult.split("\n").at(0).trim();
 
   const spacesResult = await queryAerospace(
