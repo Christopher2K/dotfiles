@@ -5,6 +5,7 @@ options=(
 	width=6.0
 	hidpi=on
 	active_color=0xffa89984
+	blacklist="idea,studio"
 )
 
 borders "${options[@]}"

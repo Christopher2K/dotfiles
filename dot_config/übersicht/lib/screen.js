@@ -2,56 +2,70 @@ import { styled, run } from "uebersicht";
 
 import * as Theme from "./theme";
 
-const NAMED_SPACES = [
-  "Work",
-  "Browse",
-  "Music",
-  "Misc",
-  "Helper 1",
-  "Helper 2",
-  "Helper 3",
-  "Helper 4",
-];
+const NAMED_SPACES = {
+  1: "1",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+  6: "6",
+  7: "7",
+  8: "8",
+  M: "M",
+};
 
-const YABAI_COMMAND = "/opt/homebrew/bin/yabai";
+const AEROSPACE_COMMAND = "/opt/homebrew/bin/aerospace";
 
-const messageYabai = (command) =>
-  run(`${YABAI_COMMAND} -m ${command}`).then(JSON.parse);
-const queryYabai = (command) =>
-  run(`${YABAI_COMMAND} -m query ${command}`).then(JSON.parse);
-
-function getSpaces(displayIndex) {
-  return queryYabai(`--spaces --display ${displayIndex}`).then((result) => {
-    return result.filter((space) => {
-      return space["is-native-fullscreen"] === false;
-    });
-  });
-}
+const queryAerospace = (command) => run(`${AEROSPACE_COMMAND} ${command}`);
 
 export async function getScreensAndSpaces() {
-  const result = await queryYabai(`--displays`);
-  const currentScreenWidth = window.screen.width;
-  const currentScreenHeight = window.screen.height;
+  const currentBarMonitorIndex =
+    (await run(`system_profiler SPDisplaysDataType -json`)
+      .then(JSON.parse)
+      .then((result) =>
+        result.SPDisplaysDataType[0].spdisplays_ndrvs.findIndex((display) => {
+          const [width, height] = display._spdisplays_resolution
+            .split(" @ ")
+            .at(0)
+            .split(" x ");
 
-  const screen = result.find((yabaiDisplay) => {
-    return (
-      yabaiDisplay.frame.w === currentScreenWidth &&
-      yabaiDisplay.frame.h === currentScreenHeight
-    );
-  });
+          return (
+            +width === window.screen.width && +height === window.screen.height
+          );
+        }),
+      )) + 1;
 
-  const spaces = await getSpaces(screen.index);
+  const monitorFocusedResult = await queryAerospace("list-monitors --focused");
+  const monitorFocusedId = +monitorFocusedResult
+    .split("\n")
+    .at(0)
+    .trim()
+    .split(" | ")
+    .at(0);
+
+  const focusedSpaceResult = await queryAerospace("list-workspaces --focused");
+  const focusedSpaceId = focusedSpaceResult.split("\n").at(0).trim();
+
+  const spacesResult = await queryAerospace(
+    `list-workspaces --monitor ${currentBarMonitorIndex}`,
+  );
+  const spaces = spacesResult
+    .trim()
+    .split("\n")
+    .map((line, index) => {
+      const id = line.trim();
+      return {
+        id,
+        index: index + 1,
+        name: NAMED_SPACES[index],
+        hasFocus: id === focusedSpaceId,
+      };
+    });
 
   return {
-    index: screen.index,
-    hasFocus: screen["has-focus"] ?? null,
-    spaces: spaces.map((space) => {
-      return {
-        index: space.index,
-        isVisible: space["is-visible"],
-        hasFocus: space["has-focus"],
-      };
-    }),
+    index: currentBarMonitorIndex,
+    hasFocus: currentBarMonitorIndex === monitorFocusedId,
+    spaces,
   };
 }
 
@@ -90,9 +104,9 @@ const SpaceLabel = styled("p")`
 `;
 
 function Space({ space }) {
-  const goToSpace = () => {
-    messageYabai(`space --focus ${space.index}`);
-  };
+  function goToSpace() {
+    queryAerospace(`workspace ${space.id.toString()}`);
+  }
 
   return (
     <SpaceLabel
@@ -100,20 +114,18 @@ function Space({ space }) {
       isVisible={space.isVisible}
       onClick={goToSpace}
     >
-      {NAMED_SPACES[space.index - 1]}
+      {NAMED_SPACES[space.id]}
     </SpaceLabel>
   );
 }
 
 export function SpacesWidget({ screen }) {
-  const spaces = screen.spaces.slice(0, 4);
-
   return (
     <Root>
-      {spaces.map((space, index) => (
+      {screen.spaces.map((space, index) => (
         <SpaceContainer key={space.index}>
           <Space space={space} />
-          {index !== spaces.length - 1 && <Separator>|</Separator>}
+          {index !== screen.spaces.length - 1 && <Separator>|</Separator>}
         </SpaceContainer>
       ))}
     </Root>

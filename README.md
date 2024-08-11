@@ -8,7 +8,7 @@ This repository (now managed by chezMoi) contains my dotfiles and stuff I'd like
 
 - Dependency manager: [brew](https://brew.sh/)
 - Shell: [oh-my-zsh](https://ohmyz.sh/)
-- Window manager: [yabai](https://github.com/koekeishiya/yabai)
+- Window manager: [aerospace](https://github.com/nikitabobko/AeroSpace)
 - Widget manager: [Übersicht](https://github.com/felixhageloh/uebersicht)
 - Editor: Neovim v0.9+
 - Terminal: [Kitty Terminal](https://sw.kovidgoyal.net/kitty/)
@@ -19,7 +19,7 @@ You can technically pick any file here and use it as a config file for the corre
 
 ### Interpreter version manager
 
-I'm using ASDF to get:
+I'm using MiseEnPlace to get:
 
 - Python
 - Node and PNPM
