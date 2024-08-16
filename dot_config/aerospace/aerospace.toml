@@ -14,9 +14,9 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = []
 
-exec-on-workspace-change = [
-        '/bin/bash', '-c', "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"Bar-jsx\"'"
-]
+# exec-on-workspace-change = [
+#         '/bin/bash', '-c', "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"Bar-jsx\"'"
+# ]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -56,14 +56,14 @@ inner.vertical =   12
 # Normal setup
 
 outer.left =       12   
-outer.bottom =     58
+outer.bottom =     12
 outer.top =        12
 outer.right =      12
 
 # Video creation setup
 
 # outer.left = [{ monitor.main = 20 }, 12]
-# outer.bottom = [{ monitor.main = 80 }, 58]
+# outer.bottom = [{ monitor.main = 20}, 12]
 # outer.top = [{ monitor.main = 20 }, 12]
 # outer.right = [{ monitor.main = 664 }, 12]
 
@@ -194,7 +194,7 @@ alt-left = 'workspace prev'
 alt-right = 'workspace next'
 
 # Custom shortcuts
-alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
+alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 alt-b = 'exec-and-forget open -n /Applications/Arc.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
@@ -231,7 +231,7 @@ M = 'secondary'
 ## Main work apps ##
 ####################
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
+if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -263,6 +263,10 @@ run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace M'
 
 
