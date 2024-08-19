@@ -7,7 +7,7 @@ return {
     { "hrsh7th/cmp-nvim-lsp", },
     { "L3MON4D3/LuaSnip", },
     { "elixir-tools/elixir-tools.nvim", },
-    { "pmizio/typescript-tools.nvim", },
+    -- { "pmizio/typescript-tools.nvim", },
     { "mrcjkb/rustaceanvim",               lazy = false }
   },
   config = function()
@@ -22,9 +22,9 @@ return {
       "lua_ls",
       "pyright",
       "svelte",
-      "tailwindcss",
       "volar",
       "yamlls",
+      "tsserver",
     }
 
     local manual_servers_list = {
@@ -177,11 +177,11 @@ return {
       }
     }
 
-    local tstools = require("typescript-tools")
-    tstools.setup({
-      on_attach = on_attach_callback,
-      handlers = handlers,
-    })
+    -- local tstools = require("typescript-tools")
+    -- tstools.setup({
+    --   on_attach = on_attach_callback,
+    --   handlers = handlers,
+    -- })
 
     -- Rust setup
     vim.g.rustaceanvim = {
