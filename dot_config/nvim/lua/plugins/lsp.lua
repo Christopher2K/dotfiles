@@ -7,8 +7,8 @@ return {
     { "hrsh7th/cmp-nvim-lsp", },
     { "L3MON4D3/LuaSnip", },
     { "elixir-tools/elixir-tools.nvim", },
-    -- { "pmizio/typescript-tools.nvim", },
-    { "mrcjkb/rustaceanvim",               lazy = false }
+    { "mrcjkb/rustaceanvim",                lazy = false },
+    { "luckasRanarison/tailwind-tools.nvim" }
   },
   config = function()
     -- Default server
@@ -17,6 +17,7 @@ return {
       "cssls",
       "docker_compose_language_service",
       "dockerls",
+      "eslint",
       "html",
       "jsonls",
       "lua_ls",
@@ -24,12 +25,13 @@ return {
       "svelte",
       "volar",
       "yamlls",
-      "tsserver",
+      "vtsls",
     }
 
     local manual_servers_list = {
       "ocamllsp",
-      "gleam"
+      "tailwindcss",
+      "gleam",
     }
 
     local servers_list = {}
@@ -44,6 +46,9 @@ return {
     local luasnip = require("luasnip")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_config = require("lspconfig")
+    local utils = require('lspconfig.util')
+
+
 
     -- Completion engine setup
     cmp.setup({
@@ -177,11 +182,25 @@ return {
       }
     }
 
-    -- local tstools = require("typescript-tools")
-    -- tstools.setup({
-    --   on_attach = on_attach_callback,
-    --   handlers = handlers,
-    -- })
+
+    -- Tailwind setup
+    lsp_config.tailwindcss.setup(vim.tbl_extend(
+      "force",
+      {
+        capabilities = capabilities,
+        handlers = handlers,
+      },
+      {
+        filetypes = { "html", "elixir", "eelixir", "heex" },
+        init_options = {
+          userLanguages = {
+            elixir = "html-eex",
+            eelixir = "html-eex",
+            heex = "html-eex",
+          },
+        },
+      }
+    ))
 
     -- Rust setup
     vim.g.rustaceanvim = {

@@ -4,6 +4,5 @@ return {
     "SmiteshP/nvim-navic",
   },
   opts = {
-    attach_navic = true,
   },
 }

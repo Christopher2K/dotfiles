@@ -22,13 +22,16 @@ return {
     telescope.setup({
       pickers = {
         find_files = {
+          path_display = { "truncate" },
           theme = theme,
           previewer = false,
         },
         live_grep = {
+          path_display = { "truncate" },
           theme = theme,
         },
         buffers = {
+          path_display = { "truncate" },
           previewer = false,
           theme = theme,
         },

@@ -1,6 +1,3 @@
-local opts = require("nvim-opts")
-opts.init()
-
 -- Leader key conf (should go before initializing lazy)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
@@ -21,9 +18,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- End leader key conf
 
-require("lazy").setup("plugins")
+if vim.g.vscode then
+  print("VSCode, disabling all plugins")
+else
+  require("lazy").setup("plugins")
+end
+
 -- End lazy initialization
 
+local opts = require("nvim-opts")
+opts.init()
 local usercommand = require("nvim-usercmd")
 usercommand.init()
 

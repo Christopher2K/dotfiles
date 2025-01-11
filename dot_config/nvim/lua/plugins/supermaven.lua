@@ -1,5 +1,6 @@
 return {
   "supermaven-inc/supermaven-nvim",
+  enabled = true,
   main = "supermaven-nvim",
   opts = {
     keymaps = {

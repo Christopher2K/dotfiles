@@ -1,8 +1,5 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = {
-    { "windwp/nvim-ts-autotag" },
-  },
   main = "nvim-treesitter.configs",
   opts = {
     auto_install = true,
@@ -29,9 +26,6 @@ return {
       "zig",
     },
     highlight = {
-      enable = true,
-    },
-    autotag = {
       enable = true,
     },
     indent = {

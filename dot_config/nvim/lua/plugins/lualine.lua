@@ -18,7 +18,7 @@ return {
         theme = "gruvbox",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        disabled_filetypes = {},
+        disabled_filetypes = { "lazygit" },
         always_divide_middle = true,
         globalstatus = true,
       },
@@ -38,7 +38,6 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      tabline = {},
       extensions = {},
     })
   end

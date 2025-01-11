@@ -1,13 +1,32 @@
 return {
   "folke/noice.nvim",
-  tag = "v4.5.0",
   dependencies = {
-    { "MunifTanjim/nui.nvim", commit = "61574ce6e60c815b0a0c4b5655b8486ba58089a1" },
+    { "MunifTanjim/nui.nvim" },
   },
-  main = 'noice',
   opts = {
+    routes = {
+      {
+        filter = { event = 'msg_show', kind = '', find = 'written' },
+        opts = { skip = true },
+      },
+      {
+        filter = { event = 'msg_show', kind = '', find = 'Modified' },
+        opts = { skip = true },
+      },
+      {
+        filter = { event = 'msg_show', kind = '', find = 'lines' },
+        opts = { skip = true },
+      },
+      {
+        filter = { event = 'msg_show', kind = '', find = '--' },
+        opts = { skip = true },
+      },
+    },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+      hover = {
+        enabled = false,
+      },
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
@@ -26,6 +45,7 @@ return {
   config = function(opts)
     local noice = require("noice")
     noice.setup(opts)
+    print("noice.setup")
 
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "NoiceCmdlinePopup" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { link = "NoiceCmdlinePopup" })
