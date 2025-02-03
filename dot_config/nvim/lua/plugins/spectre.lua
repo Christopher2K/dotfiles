@@ -4,4 +4,17 @@ return {
   dependencies = {
     { "nvim-lua/plenary.nvim" },
   },
+  main = "spectre",
+  opts = {
+    replace_engine = {
+      ["sed"] = {
+        cmd = "sed",
+        args = {
+          "-i",
+          "",
+          "-E",
+        },
+      },
+    },
+  }
 }
