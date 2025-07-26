@@ -1,0 +1,52 @@
+yabai -m config layout stack
+yabai -m config window_placement second_child
+
+# Spacing around windows
+yabai -m config top_padding 12 
+yabai -m config bottom_padding 78 
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+# Border color
+yabai -m config window_shadow off
+
+yabai -m config mouse_follows_focus off
+
+# Ignore programs
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Alfred Prefereces$" manage=off
+yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add app="^Stream Deck$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Web Inspector.*" manage=off
+yabai -m rule --add app="^Concentration$" manage=off
+yabai -m rule --add app="^CoScreen$" manage=off
+yabai -m rule --add app="^WakfuClient$" manage=off
+
+yabai -m rule --add app="^Ghostty$" space=^1
+yabai -m rule --add app="^Arc$" space=^2
+
+# START WITH YABAI
+sketchybar &
+
+
+# INTEGRATIONS
+yabai -m signal --add event=space_changed action="sketchybar --trigger yabai_space_update"
+yabai -m signal --add event=space_created action="sketchybar --trigger yabai_space_update"
+yabai -m signal --add event=space_destroyed action="sketchybar --trigger yabai_space_update"
+
+yabai -m signal --add event=display_added action="sketchybar --trigger yabai_display_update"
+yabai -m signal --add event=display_removed action="sketchybar --trigger yabai_display_update"
+yabai -m signal --add event=display_changed action="sketchybar --trigger yabai_display_update"
+yabai -m signal --add event=display_resized action="sketchybar --trigger yabai_display_update"
+
+yabai -m signal --add event=application_front_switched action="sketchybar --trigger yabai_window_update"
+yabai -m signal --add event=window_focused action="sketchybar --trigger yabai_window_update"
+yabai -m signal --add event=window_resized action="sketchybar --trigger yabai_window_update"
+yabai -m signal --add event=window_moved action="sketchybar --trigger yabai_window_update"
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+

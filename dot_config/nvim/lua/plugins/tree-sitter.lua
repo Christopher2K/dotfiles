@@ -23,6 +23,7 @@ return {
       "tsx",
       "vue",
       "svelte",
+      "swift",
       "zig",
     },
     highlight = {

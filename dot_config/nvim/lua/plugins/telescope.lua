@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  version = "0.1.8",
+  enabled = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-media-files.nvim",

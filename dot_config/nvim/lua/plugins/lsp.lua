@@ -8,12 +8,14 @@ return {
     { "L3MON4D3/LuaSnip", },
     { "elixir-tools/elixir-tools.nvim", },
     { "mrcjkb/rustaceanvim",                lazy = false },
-    { "luckasRanarison/tailwind-tools.nvim" }
+    { "luckasRanarison/tailwind-tools.nvim" },
   },
   config = function()
+    -- Check nvim-autocmds.lua for formatting autocmds
     -- Default server
     local managed_servers_list = {
       "astro",
+      "clangd",
       "cssls",
       "docker_compose_language_service",
       "dockerls",
@@ -29,12 +31,17 @@ return {
     }
 
     local manual_servers_list = {
+      "biome",
       "ocamllsp",
       "tailwindcss",
       "gleam",
+      "sourcekit"
     }
 
+    local disabled_formatters = { "vtsls", "jsonls", "biome" }
+
     local servers_list = {}
+
     table.move(managed_servers_list, 1, #managed_servers_list, 1, servers_list)
     table.move(manual_servers_list, 1, #manual_servers_list, #servers_list + 1, servers_list)
 
@@ -46,9 +53,6 @@ return {
     local luasnip = require("luasnip")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_config = require("lspconfig")
-    local utils = require('lspconfig.util')
-
-
 
     -- Completion engine setup
     cmp.setup({
@@ -128,6 +132,12 @@ return {
 
     -- Callback executed when a server is attached to a buffer
     local on_attach_callback = function(client, buffer)
+      local disable_formatter = vim.tbl_contains(disabled_formatters, client.name)
+
+      if disable_formatter then
+        client.server_capabilities.documentFormattingProvider = false
+      end
+
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = buffer })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = buffer })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = buffer })
@@ -182,6 +192,11 @@ return {
       }
     }
 
+    lsp_config.biome.setup({
+      cmd = { "./node_modules/.bin/biome", "lsp-proxy" },
+      capabilities = capabilities,
+      on_attach = on_attach_callback,
+    })
 
     -- Tailwind setup
     lsp_config.tailwindcss.setup(vim.tbl_extend(

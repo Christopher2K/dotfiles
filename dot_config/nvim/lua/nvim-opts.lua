@@ -5,6 +5,7 @@ function opts.init()
   vim.opt.autowrite = true -- Automatically write file when it was changed
   vim.opt.encoding = "UTF-8" -- Default encoding
   vim.opt.number = true -- Number in front of each line
+  vim.opt.relativenumber = true -- Relative number in front of each line
   vim.opt.mouse = "a" -- Enabled in all mode
   vim.opt.list = true -- Show space, line breaks, spaces, tabs...
   vim.opt.listchars:append("eol:↴") -- Set the sign for the EOL

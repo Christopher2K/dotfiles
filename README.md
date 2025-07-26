@@ -6,28 +6,17 @@ This repository (now managed by chezMoi) contains my dotfiles and stuff I'd like
 
 ### Few important tools
 
-- Dependency manager: [brew](https://brew.sh/)
+- Package manager: [brew](https://brew.sh/)
+- Editor: Neovim v0.11+
 - Shell: [oh-my-zsh](https://ohmyz.sh/)
-- Window manager: [aerospace](https://github.com/nikitabobko/AeroSpace)
-- Widget manager: [Übersicht](https://github.com/felixhageloh/uebersicht)
-- Editor: Neovim v0.9+
-- Terminal: [Kitty Terminal](https://sw.kovidgoyal.net/kitty/)
+- Window manager: [yabai](https://github.com/koekeishiya/yabai)
+- System bar: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
+- Terminal: [GhosTTY](https://ghostty.org/)
+- Runtime manager: [mise-en-place](https://mise.jdx.dev/)
 
 ### How to use
 
 You can technically pick any file here and use it as a config file for the corresponding tool. If you want to get the full installation
-
-### Interpreter version manager
-
-I'm using MiseEnPlace to get:
-
-- Python
-- Node and PNPM
-- Rust
-- Ruby
-- Go
-- Neovim
-  ....
 
 ## Sources
 

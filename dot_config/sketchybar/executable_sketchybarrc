@@ -1,0 +1,33 @@
+#!/bin/bash
+
+source './theme.sh'
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+sketchybar --bar position=bottom \
+    height=$BAR_HEIGHT \
+    color=0x00FFFFFF \
+    margin=0 \
+    corner_radius=8 \
+    y_offset=8 \
+    font_smoothing=on
+
+default=(
+  padding_left=4
+  padding_right=4
+  icon.font="$FONT_FAMILY:Bold:$ICON_FONT_SIZE"
+  label.font="$FONT_FAMILY:Bold:$FONT_SIZE"
+  icon.color=$FOREGROUND_COLOR
+  label.color=$FOREGROUND_COLOR
+)
+
+sketchybar --default "${default[@]}"
+
+source './spaces.sh'
+source './app.sh'
+
+source './clock.sh'
+source './battery.sh'
+source './music.sh'
+
+sketchybar --update

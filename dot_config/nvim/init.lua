@@ -20,22 +20,35 @@ vim.opt.rtp:prepend(lazypath)
 
 if vim.g.vscode then
   print("VSCode, disabling all plugins")
+
+  local opts = require("nvim-opts")
+  opts.init()
+
+  local usercommand = require("nvim-usercmd")
+  usercommand.init()
+
+  local keys = require("nvim-keys")
+  keys.init()
+
+  local autocmds = require("nvim-autocmds")
+  autocmds.init()
 else
   require("lazy").setup("plugins")
+
+  local opts = require("nvim-opts")
+  opts.init()
+
+  local usercommand = require("nvim-usercmd")
+  usercommand.init()
+
+  local keys = require("nvim-keys")
+  keys.init()
+
+  local autocmds = require("nvim-autocmds")
+  autocmds.init()
+
+  local filetypes = require("nvim-filetypes")
+  filetypes.init()
 end
 
 -- End lazy initialization
-
-local opts = require("nvim-opts")
-opts.init()
-local usercommand = require("nvim-usercmd")
-usercommand.init()
-
-local keys = require("nvim-keys")
-keys.init()
-
-local autocmds = require("nvim-autocmds")
-autocmds.init()
-
-local filetypes = require("nvim-filetypes")
-filetypes.init()

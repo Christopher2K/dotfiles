@@ -2,9 +2,9 @@
 
 options=(
 	style=round
-	width=6.0
+	width=10
 	hidpi=on
-	active_color=0xffa89984
+	active_color=0xfffe8019
 	blacklist="idea,studio"
 )
 
