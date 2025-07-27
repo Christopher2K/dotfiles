@@ -25,7 +25,6 @@ return {
       "lua_ls",
       "pyright",
       "svelte",
-      "volar",
       "yamlls",
       "vtsls",
     }
@@ -47,6 +46,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
+      automatic_enable = false,
       ensure_installed = managed_servers_list,
     })
     local cmp = require("cmp")
