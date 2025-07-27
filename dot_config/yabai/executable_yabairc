@@ -28,6 +28,18 @@ yabai -m rule --add app="^WakfuClient$" manage=off
 yabai -m rule --add app="^Ghostty$" space=^1
 yabai -m rule --add app="^Arc$" space=^2
 
+yabai -m rule --add app="^Music$" space=^4
+yabai -m rule --add app="^Cider$" space=^4
+yabai -m rule --add app="^Loopback$" space=^4
+yabai -m rule --add app="^Insta360" space=^4
+
+yabai -m rule --add app="^OBS Studio$" space=^5
+
+yabai -m rule --add app="^Slack$" space=^8
+yabai -m rule --add app="^Discord$" space=^8
+yabai -m rule --add app="^Messages$" space=^8
+yabai -m rule --add app="^Signal$" space=^8
+
 # START WITH YABAI
 sketchybar &
 
