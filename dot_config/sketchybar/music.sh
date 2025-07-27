@@ -12,4 +12,4 @@ sketchybar --add item music right \
     background.color=$FOREGROUND_COLOR \
     background.height=$BAR_HEIGHT \
     background.corner_radius=$BAR_RADIUS \
-    script="$PLUGIN_DIR/cider.sh" \
+    script="$PLUGIN_DIR/applemusic.sh" \

@@ -2,8 +2,6 @@
 
 now_playing=$(curl -s http://localhost:10767/api/v1/playback/now-playing)
 
-echo $now_playing
-
 if [ "$now_playing" != "" ]; then
     artist_name=$(echo "$now_playing" | jq -r '.info.artistName')
     name=$(echo "$now_playing" | jq -r '.info.name')
