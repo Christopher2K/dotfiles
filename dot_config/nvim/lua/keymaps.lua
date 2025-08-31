@@ -40,6 +40,65 @@ function keys.init()
   -- Move lines
   vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up", silent = true })
   vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down", silent = true })
+
+  -- Lsp related keymaps
+  vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "Open diagnostic popup" })
+  vim.keymap.set("n", "[d",
+    function()
+      vim.diagnostic.jump({ count = -1, float = true })
+    end,
+    { desc = "Go to previous diagnostic" }
+  )
+  vim.keymap.set("n", "]d",
+    function()
+      vim.diagnostic.jump({ count = 1, float = true })
+    end,
+    { desc = "Go to next diagnostic" }
+  )
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+  vim.keymap.set("n", "<leader>wl",
+    function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, { desc = "List workspace folders" }
+  )
+  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+  vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Check references" })
+
+  -- Plugins stuff
+  vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle reveal position=float<cr>", { desc = "Toggle explorer" })
+  vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
+  vim.keymap.set("n", "<leader>i", "<cmd>Sleuth<cr>", { desc = "Fix indentiation" })
+
+  -- File picker
+  local pick = require("mini.pick")
+
+  vim.keymap.set("n", "<leader>ff",
+    function()
+      return pick.builtin.files({})
+    end,
+    { desc = "Pick file" }
+  )
+  vim.keymap.set("n", "<leader>fb",
+    function()
+      pick.builtin.buffers({})
+    end,
+    { desc = "Pick buffer" }
+  )
+  vim.keymap.set("n", "<leader>fg",
+    function()
+      pick.builtin.grep_live({})
+    end,
+    { desc = "Pick live grep" }
+  )
+
+  -- Terminal
+  vim.keymap.set("n", "`", require('FTerm').toggle, { desc = "Open terminal" })
+  vim.keymap.set("t", "`", '<C-\\><C-n><cmd>lua require("FTerm").toggle()<cr>', { desc = "Close terminal" })
 end
 
 return keys

@@ -1,54 +1,39 @@
--- Leader key conf (should go before initializing lazy)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
-
--- Lazy initialization
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-
-vim.opt.rtp:prepend(lazypath)
-
--- End leader key conf
 
 if vim.g.vscode then
   print("VSCode, disabling all plugins")
 
-  local opts = require("nvim-opts")
+  local opts = require("opts")
   opts.init()
 
-  local usercommand = require("nvim-usercmd")
+  local usercommand = require("usercmds")
   usercommand.init()
 
-  local keys = require("nvim-keys")
+  local keys = require("keys")
   keys.init()
 
-  local autocmds = require("nvim-autocmds")
+  local autocmds = require("autocmds")
   autocmds.init()
 else
-  require("lazy").setup("plugins")
+  local plugins = require("plugins")
+  plugins.init()
+  plugins.configure()
 
-  local opts = require("nvim-opts")
+  local opts = require("opts")
   opts.init()
 
-  local usercommand = require("nvim-usercmd")
+  local usercommand = require("usercmds")
   usercommand.init()
 
-  local keys = require("nvim-keys")
+  local keys = require("keymaps")
   keys.init()
 
-  local autocmds = require("nvim-autocmds")
+  local autocmds = require("autocmds")
   autocmds.init()
 
-  local filetypes = require("nvim-filetypes")
+  local filetypes = require("filetypes")
   filetypes.init()
-end
 
--- End lazy initialization
+  local lsp = require("lsp")
+  lsp.init()
+end

@@ -17,6 +17,19 @@ function autocmds.init()
       autocmds.execute_on_all_tabs("wincmd =")
     end,
   })
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup("format_on_save"),
+    pattern = "*",
+    callback = function(args)
+      require("conform").format({ bufnr = args.buf, lsp_fallback = true, async = false })
+    end,
+  })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '<filetype>' },
+    callback = function() vim.treesitter.start() end,
+  })
 end
 
 return autocmds

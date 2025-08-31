@@ -20,6 +20,14 @@ function opts.init()
   vim.opt.smartindent = true -- Insert indents automatically
   vim.opt.winbar = "" -- Disable winbar
   vim.opt.mousescroll = "ver:3,hor:0" -- Disable horizontal mouse scrolling
+  vim.opt.winborder = "rounded" -- Make all popup window rounded
+  vim.opt.background = "light" -- Theme
+  vim.opt.timeout = true -- Used for whichkey
+  vim.opt.timeoutlen = 300 -- Used for whichkey
+  vim.opt.ignorecase = true -- Case insensitive search
+
+  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 end
 
 return opts
