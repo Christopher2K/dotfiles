@@ -7,7 +7,7 @@ This repository (now managed by chezMoi) contains my dotfiles and stuff I'd like
 ### Few important tools
 
 - Package manager: [brew](https://brew.sh/)
-- Editor: Neovim v0.11+
+- Editor: Neovim v0.12+ (Nightly)
 - Shell: [oh-my-zsh](https://ohmyz.sh/)
 - Window manager: [yabai](https://github.com/koekeishiya/yabai)
 - System bar: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
