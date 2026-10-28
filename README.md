@@ -1,3 +1,6 @@
+> [!WARNING]
+>  Deprecated, I use NIX now, as GOD intended
+
 # My dotsfiles & stuffs
 
 This repository (now managed by chezMoi) contains my dotfiles and stuff I'd like to keep between my machines. Everything should work as expected on macOS.
